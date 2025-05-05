@@ -1,0 +1,43 @@
+---
+name: Lifecycle
+
+"on":
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - closed
+      - opened
+      - synchronize
+      - reopened
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref to checkout before build (i.e. my-feature-branch )
+        default: "main"
+
+concurrency: # FIXME: prevent release commit cancellation
+  group: >
+    ${{ github.workflow }}-
+    ${{ github.event_name }}-
+    ${{ github.event.inputs.ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-please:
+    name: Release Please
+    runs-on: blacksmith-2vcpu-ubuntu-2204
+    outputs:
+      release_created: ${{ steps.release-please.outputs.release_created }}
+      tag_name: ${{ steps.release-please.outputs.tag_name }}
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - if: github.event_name == 'push' # TODO: explicit on push to main
+        id: release-please
+        name: Run Release Please
+        uses: googleapis/release-please-action@a02a34c4d625f9be7cb89156071d8567266a2445 # v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
