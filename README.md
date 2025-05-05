@@ -6,10 +6,9 @@ MC-Server-Test | <a href="https://github.com/3arthqu4ke/headlessmc">HMC</a> | <a
 
 <div align="center">
 
-[![CodeFactor](https://www.codefactor.io/repository/github/headlesshq/mc-runtime-test/badge/main)](https://www.codefactor.io/repository/github/headlesshq/mc-runtime-test/overview/main)
-[![GitHub All Releases](https://img.shields.io/github/downloads/headlesshq/mc-server-test/total.svg)](https://github.com/headlesshq/mc-server-test/releases)
 ![GitHub License](https://img.shields.io/github/license/headlesshq/mc-server-test)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/headlesshq/mc-server-test)
+![GitHub Last Tag](https://img.shields.io/github/v/tag/headlesshq/mc-server-test)
 
 </div>
 
