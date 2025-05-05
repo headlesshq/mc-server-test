@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bootstrap-sha": "c2db211b118e4dc718c7ad254025535a89992419",
+  "packages": {
+    ".": {
+      "include-component-in-tag": false,
+      "include-v-in-tag": false,
+      "package-name": "mc-server-test",
+      "release-type": "simple",
+      "extra-files": [
+        "action.yml",
+        "README.md"
+      ]
+    }
+  }
+}
