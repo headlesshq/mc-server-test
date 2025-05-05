@@ -73,7 +73,7 @@ distribution: "temurin"
           java: ${{ env.java_version }}
 </pre>
 
-More examples (replace `uses: ./` with `uses: headlesshq/mc-server-test ...`:
+More examples (replace `uses: ./` with `uses: headlesshq/mc-server-test ...`):
 - [Paper Workflow Example](.github/workflows/test-plugin.yml)
 - [Matrix Workflow Testing Multiple Versions](.github/workflows/run-matrix.yml)
 
@@ -86,7 +86,6 @@ The following table summarizes the available inputs for customization:
 |-----------------------|----------------------------------------|----------|------------------------------------|
 | `mc`                  | Minecraft version to run               | Yes      | `1.21.5`                           |
 | `modloader`           | Modloader to install                   | Yes      | `paper`, `fabric`, `neoforge`,     |
-| `regex`               | Regex to match the modloader jar       | Yes      | `.*fabric.*`                       |
 | `java`                | Java version to use                    | Yes      | `8`, `16`, `17`, `21`              |
 | `headlessmc-command`  | Command-line arguments for HeadlessMC  |          | `--jvm "-Djava.awt.headless=true"` |
 | `fabric-api`          | Fabric API version to download or none |          | `0.97.0`, `none`                   |
