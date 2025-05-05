@@ -39,6 +39,7 @@ to test via our [json schema](./test.json).
 Below is a basic workflow example to run the Minecraft server using MC-Server-Test.
 
 <pre lang="yml">
+---
 name: Run Minecraft Server
 
 on:
