@@ -27,7 +27,7 @@ concurrency: # FIXME: prevent release commit cancellation
 jobs:
   release-please:
     name: Release Please
-    runs-on: blacksmith-2vcpu-ubuntu-2204
+    runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release-please.outputs.release_created }}
       tag_name: ${{ steps.release-please.outputs.tag_name }}
