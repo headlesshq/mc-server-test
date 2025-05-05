@@ -7,9 +7,9 @@ MC-Server-Test | <a href="https://github.com/3arthqu4ke/headlessmc">HMC</a> | <a
 <div align="center">
 
 [![CodeFactor](https://www.codefactor.io/repository/github/headlesshq/mc-runtime-test/badge/main)](https://www.codefactor.io/repository/github/headlesshq/mc-runtime-test/overview/main)
-[![GitHub All Releases](https://img.shields.io/github/downloads/headlesshq/mc-runtime-test/total.svg)](https://github.com/headlesshq/mc-runtime-test/releases)
-![GitHub License](https://img.shields.io/github/license/headlesshq/mc-runtime-test)
-![GitHub Last Commit](https://img.shields.io/github/last-commit/headlesshq/mc-runtime-test)
+[![GitHub All Releases](https://img.shields.io/github/downloads/headlesshq/mc-server-test/total.svg)](https://github.com/headlesshq/mc-server-test/releases)
+![GitHub License](https://img.shields.io/github/license/headlesshq/mc-server-test)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/headlesshq/mc-server-test)
 
 </div>
 
@@ -39,7 +39,6 @@ to test via our [json schema](./test.json).
 Below is a basic workflow example to run the Minecraft server using MC-Server-Test.
 
 <pre lang="yml">
----
 name: Run Minecraft Server
 
 on:
