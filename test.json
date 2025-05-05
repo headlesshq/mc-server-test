@@ -1,0 +1,22 @@
+{
+  "name": "Server with Plugin Test",
+  "steps": [
+    {
+      "type": "ENDS_WITH",
+      "message": "For help, type \"help\""
+    },
+    {
+      "type": "SEND",
+      "message": "mc-server-test-command"
+    },
+    {
+      "type": "ENDS_WITH",
+      "message": "Hello from mc-server-test!"
+    },
+    {
+      "type": "SEND",
+      "message": "stop",
+      "timeout": 120
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+name: MC-Server-Test
+description: Test Minecraft production servers inside your CI
+author: HeadlessHQ
+branding:
+  icon: play
+  color: red
+
+inputs:
+  mc:
+    description: Minecraft version to run
+    required: true
+  modloader:
+    description: Modloader to install (paper, fabric, vanilla, forge, neoforge)
+    required: true
+  java:
+    description: Java version to use (8, 16, 17, 21)
+    required: true
+  headlessmc-command:
+    description: Command-line arguments for HeadlessMC
+    default: ''
+  fabric-api:
+    description: Fabric API version to download (e.g. 0.97.0) or none
+    default: "none"
+  fabric-gametest-api:
+    description: Fabric GameTest API version (e.g. 1.3.5+85d85a934f) or none
+    default: "none"
+  download-hmc:
+    description: Download HeadlessMC
+    default: "true"
+  hmc-version:
+    description: HeadlessMC version
+    default: "2.6.1"
+  cache-mc:
+    description: Cache .minecraft
+    default: "true"
+  test-file:
+    description: Json file for HeadlessMc command tests
+    default: "none"
+
+runs:
+  using: composite
+  steps:
+    - name: Bootstrap HeadlessMC
+      run: |
+        mkdir -p HeadlessMC run/mods
+        cat <<EOF >> HeadlessMC/config.properties
+        hmc.java.versions=$JAVA_HOME/bin/java
+        hmc.server.test.dir=$PWD/run
+        hmc.offline=true
+        hmc.rethrow.launch.exceptions=true
+        hmc.exit.on.failed.command=true
+        hmc.server.launch.for.eula=true
+        hmc.server.accept.eula=true
+        hmc.server.test.cache=true
+        hmc.server.test.cache.use.mc.dir=true
+        hmc.server.test.type=${{ inputs.modloader }}
+        hmc.server.test.version=${{ inputs.mc }}
+        hmc.crash.report.watcher=true
+        EOF
+      shell: bash
+
+    - if: inputs.test-file == 'none'
+      name: Configure HeadlessMc to use no Test file
+      run: echo hmc.server.test=true >> HeadlessMC/config.properties
+      shell: bash
+
+    - if: inputs.test-file != 'none'
+      name: Configure HeadlessMc to use a Test file
+      run: echo hmc.test.filename=${{ inputs.test-file }} >> HeadlessMC/config.properties
+      shell: bash
+
+    - if: inputs.download-hmc == 'true'
+      name: Get HeadlessMC
+      uses: robinraju/release-downloader@a96f54c1b5f5e09e47d9504526e96febd949d4c2 # v1.11
+      with:
+        repository: 3arthqu4ke/headlessmc
+        tag: ${{ inputs.hmc-version }}
+        fileName: headlessmc-launcher-${{ inputs.hmc-version }}.jar
+
+    - if: inputs.cache-mc == 'true'
+      name: Cache Minecraft
+      uses: useblacksmith/cache@c5fe29eb0efdf1cf4186b9f7fcbbcbc0cf025662 # v5
+      with:
+        path: /home/runner/.minecraft
+        key: ${{ inputs.mc }}-${{ inputs.modloader }}-hmc
+
+    - name: Download ${{ inputs.modloader }}-${{ inputs.mc }}
+      run: |
+        java -jar headlessmc-launcher-${{ inputs.hmc-version }}.jar --command server add ${{ inputs.modloader }} ${{ inputs.mc }}
+      shell: bash
+
+    - if: inputs.cache-mc == 'true'
+      name: Cache ${{ inputs.modloader }}-${{ inputs.mc }}
+      run: |
+        java -jar headlessmc-launcher-${{ inputs.hmc-version }}.jar --command server cache 0 -id
+      shell: bash
+
+    - if: inputs.fabric-api != 'none'
+      name: Download fabric-api v${{ inputs.fabric-api }}
+      run: >
+        wget -O run/mods/fabric-api-${{ inputs.fabric-api }}+${{ inputs.mc }}.jar
+        https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/${{ inputs.fabric-api }}+${{ inputs.mc }}/fabric-api-${{ inputs.fabric-api }}+${{ inputs.mc }}.jar
+      shell: bash
+
+    - if: inputs.fabric-gametest-api != 'none'
+      name: Download fabric-gametest-api v${{ inputs.fabric-gametest-api }}
+      run: >
+        wget -O run/mods/fabric-gametest-api-v1-${{ inputs.fabric-gametest-api }}.jar
+        https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-gametest-api-v1/${{ inputs.fabric-gametest-api }}/fabric-gametest-api-v1-${{ inputs.fabric-gametest-api }}.jar
+      shell: bash
+
+    - name: Run server
+      run: java -jar headlessmc-launcher-${{ inputs.hmc-version }}.jar --command server launch 0 -id ${{ inputs.headlessmc-command }}
+      shell: bash

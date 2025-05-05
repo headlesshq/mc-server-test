@@ -1,0 +1,38 @@
+name: Test with Paper plugin
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        working-directory: ./test
+      - name: Build
+        run: ./gradlew build
+        working-directory: ./test
+
+      - name: Create plugins dir
+        run: mkdir -p run/plugins
+
+      - name: Copy plugin jar
+        run: cp ./test/build/libs/*.jar run/plugins/plugin.jar
+
+      - name: Run server
+        timeout-minutes: 3
+        uses: ./
+        with:
+          mc: 1.21.5
+          modloader: paper
+          java: 21
+          test-file: ./test.json

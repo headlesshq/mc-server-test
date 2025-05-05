@@ -1,0 +1,19 @@
+main: ${PACKAGE}.${NAME}
+name: ${NAME}
+version: "${VERSION}"
+api-version: "1.21.1"
+author: AUTHOR
+description: DESCRIPTION
+commands:
+  mc-server-test-command:
+    description: Test command for mc-server-test
+    usage: "For a list of commands, type /ex help"
+permissions:
+  example.test:
+    description: DESCRIPTION
+    default: true
+  example.*:
+    description: Grants all other permissions
+    default: false
+    children:
+      example.test: true
