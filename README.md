@@ -39,24 +39,23 @@ to test via our [json schema](./test.json).
 Below is a basic workflow example to run the Minecraft server using MC-Server-Test.
 
 <pre lang="yml">
----
 name: Run Minecraft Server
 
 on:
-workflow_dispatch:
+  workflow_dispatch:
 
 env:
-java_version: 21
+  java_version: 21
 
 jobs:
-run:
-runs-on: ubuntu-latest
-steps:
-- name: Install Java
-uses: actions/setup-java@v4
-with:
-java-version: ${{ env.java_version }}
-distribution: "temurin"
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+        java-version: ${{ env.java_version }}
+        distribution: "temurin"
 
       - name: [Example] Build mod
         run: ./gradlew build
