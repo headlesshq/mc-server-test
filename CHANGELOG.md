@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/headlesshq/mc-server-test/compare/1.1.0...1.1.1) (2025-12-21)
+
+
+### Bug Fixes
+
+* **deps:** update to HeadlessMc 2.8.0 ([#6](https://github.com/headlesshq/mc-server-test/issues/6)) ([bf14bc2](https://github.com/headlesshq/mc-server-test/commit/bf14bc2de38c4db3fb4a554d850f8d2043dc7354))
+
 ## [1.1.0](https://github.com/headlesshq/mc-server-test/compare/1.0.0...1.1.0) (2025-11-12)
 
 
