@@ -90,7 +90,7 @@ The following table summarizes the available inputs for customization:
 | `fabric-api`          | Fabric API version to download or none |          | `0.97.0`, `none`                   |
 | `fabric-gametest-api` | Fabric GameTest API version or none    |          | `1.3.5+85d85a934f`, `none`         |
 | `download-hmc`        | Download HeadlessMC                    |          | `true`, `false`                    |
-| `hmc-version`         | HeadlessMC version                     |          | `3.0.0-RC5`                        |
+| `hmc-version`         | HeadlessMC version                     |          | `3.0.0-RC6`                        |
 | `cache-mc`            | Cache `.minecraft`                     |          | `true`, `false`                    |
 | `test-file`           | Path to HeadlessMc test file           |          | `./test.json`                      |
 ---
