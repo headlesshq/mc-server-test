@@ -66,7 +66,7 @@ jobs:
           cp build/libs/&lt;your-mod&gt;.jar run/mods
 
       - name: Run MC test client
-        uses: headlesshq/mc-server-test@1.1.1 <!-- x-release-please-version -->
+        uses: headlesshq/mc-server-test@2.0.0 <!-- x-release-please-version -->
         with:
           mc: 1.21.5
           modloader: fabric
