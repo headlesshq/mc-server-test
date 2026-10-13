@@ -1,5 +1,6 @@
 <h1 align="center" style="font-weight: normal;"><b>MC-Server-Test</b></h1>
 <p align="center">Test Minecraft production servers inside your CI/CD pipeline.</p>
+<p align="center"><img src="docs/logo.png" alt="logo" style="width:250px;"></p>
 <p align="center">
 MC-Server-Test | <a href="https://github.com/3arthqu4ke/headlessmc">HMC</a> | <a href="https://github.com/3arthqu4ke/hmc-specifics">HMC-Specifics</a> | <a href="https://github.com/3arthqu4ke/hmc-optimizations">HMC-Optimizations</a>
 </p>
@@ -85,12 +86,12 @@ The following table summarizes the available inputs for customization:
 |-----------------------|----------------------------------------|----------|------------------------------------|
 | `mc`                  | Minecraft version to run               | Yes      | `1.21.5`                           |
 | `modloader`           | Modloader to install                   | Yes      | `paper`, `fabric`, `neoforge`,     |
-| `java`                | Java version to use                    | Yes      | `8`, `16`, `17`, `21`              |
+| `java`                | Java version to use                    | Yes      | `8`, `16`, `17`, `21`, `25`        |
 | `headlessmc-command`  | Command-line arguments for HeadlessMC  |          | `--jvm "-Djava.awt.headless=true"` |
 | `fabric-api`          | Fabric API version to download or none |          | `0.97.0`, `none`                   |
 | `fabric-gametest-api` | Fabric GameTest API version or none    |          | `1.3.5+85d85a934f`, `none`         |
 | `download-hmc`        | Download HeadlessMC                    |          | `true`, `false`                    |
-| `hmc-version`         | HeadlessMC version                     |          | `2.5.1`, `1.5.0`                   |
+| `hmc-version`         | HeadlessMC version                     |          | `3.0.0-RC7`                        |
 | `cache-mc`            | Cache `.minecraft`                     |          | `true`, `false`                    |
 | `test-file`           | Path to HeadlessMc test file           |          | `./test.json`                      |
 ---
