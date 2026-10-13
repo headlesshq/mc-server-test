@@ -1,5 +1,6 @@
 <h1 align="center" style="font-weight: normal;"><b>MC-Server-Test</b></h1>
 <p align="center">Test Minecraft production servers inside your CI/CD pipeline.</p>
+<p align="center"><img src="docs/logo.png" alt="logo" style="width:250px;"></p>
 <p align="center">
 MC-Server-Test | <a href="https://github.com/3arthqu4ke/headlessmc">HMC</a> | <a href="https://github.com/3arthqu4ke/hmc-specifics">HMC-Specifics</a> | <a href="https://github.com/3arthqu4ke/hmc-optimizations">HMC-Optimizations</a>
 </p>
