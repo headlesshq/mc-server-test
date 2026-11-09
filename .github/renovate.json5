@@ -16,6 +16,10 @@
     'prIgnoreNotification',
   ],
   rebaseWhen: 'conflicted',
+  // the nix manager is in beta and disabled by default
+  nix: {
+    enabled: true,
+  },
   packageRules: [
     {
       matchUpdateTypes: [
@@ -40,6 +44,19 @@
       addLabels: [
         'dependency/patch',
       ],
+    },
+    {
+      // the flake only provides the dev shell, so its inputs are updated together once a month
+      matchManagers: [
+        'nix',
+      ],
+      groupName: 'nix flake inputs',
+      schedule: [
+        'on the first day of the month',
+      ],
+      automerge: false,
+      semanticCommitType: 'build',
+      semanticCommitScope: 'deps',
     },
   ],
 }
