@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/headlesshq/mc-server-test/compare/2.0.0...2.1.0) (2026-11-16)
+
+
+### Features
+
+* **launcher:** HeadlessMc 3.0.0-RC9 ([#13](https://github.com/headlesshq/mc-server-test/issues/13)) ([cdc7107](https://github.com/headlesshq/mc-server-test/commit/cdc71070bfa78e5b12352aca9e1ed40c11cba6a0))
+
 ## [2.0.0](https://github.com/headlesshq/mc-server-test/compare/1.1.1...2.0.0) (2026-10-13)
 
 
